@@ -18,7 +18,7 @@ class AccessToken extends Model
 
 	public function user()
 	{
-		return $this->belongsTo('user');
+		return $this->belongsTo('users');
 	}
 
 	public function scopeUserId($query, $user_id)

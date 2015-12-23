@@ -26,7 +26,17 @@ class User extends Authenticatable
 
     public function access_token()
     {
-        return $this->hasOne('access_token');
+        return $this->hasOne('access_tokens');
+    }
+
+    public function tasks()
+    {
+        return $this->hasMany('tasks');
+    }
+
+    public function projects()
+    {
+        return $this->hasMany('projects');
     }
 
     public function scopeEmail($query, $email)
