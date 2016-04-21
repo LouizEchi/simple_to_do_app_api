@@ -28,10 +28,11 @@ Route::get('/', function () {
 */
 
 Route::group(['middleware' => 'web'], function () {
-	Route::group(['prefix' => 'v1', 'namespace' => 'Api\v1'], function()
+	Route::group(['prefix' => 'api/v1', 'namespace' => 'Api\v1'], function()
 	{
     	Route::auth();
 	    // Include user authentication routes
 	    require __DIR__.'/Routes/auth.php';
+	    Route::resource('tweet', 'TweetController');
     });
 });

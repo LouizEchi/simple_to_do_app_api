@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Project extends Model
+class Tweet extends Model
 {
 
     /**
@@ -14,8 +14,7 @@ class Project extends Model
      */
     protected $fillable = [
         'user_id',
-        'title',
-        'description',
+        'tweet'
     ];
 
     public function user()
@@ -23,13 +22,16 @@ class Project extends Model
         return $this->belongsTo('users');
     }
 
-    public function tasks()
-    {
-        return $this->hasMany('tasks');
-    }
-
     public function scopeUserId($query, $user_id)
     {
         return $query->where('user_id', $user_id);
+    }
+
+    public function scopeTweet($query, $tweet)
+    {
+        if($tweet)
+        {
+            return $query->where('tweet', $tweet);
+        }
     }
 }
